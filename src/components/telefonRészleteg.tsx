@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 interface Phone {
-    Id: number;
-    Brand: string;
-    Model: string;
-    Price: number;
+    id: number;
+    brand: string;
+    model: string;
+    price: number;
 }
 
-export default function Telefonlista(){
+export default function TelefonRészletek(){
 
-    const [phones, setPhones] = useState<Phone[]>([]);
+    const [phones, setPhones] = useState<Phone>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [errorServer,setErrorServer] = useState("")
+    const{telefonId}=useParams <{telefonId:string}>()
     useEffect(() => {
 
-        fetch('http://localhost:3000/phones')
+        fetch(`http://localhost:3000/phones/${telefonId}`)
             .then((response) => {
                 if (response.status === 404) {
                     setErrorServer("Resource not found")
@@ -53,17 +55,7 @@ export default function Telefonlista(){
             <h2>Telefonok</h2>
             <a href="/telefonfelvetel">új telefon felvétel</a><br />
             <a href="/telefontörlés">telefon törlése</a><br />
-            <ul>
-                {phones.map((phone) => (
-                    <li key={phone.Id}>
-                        {phone.Brand} - {phone.Model} - {phone.Price} Ft
-                        <a
-                         href={`/telefonRész/${phone.Id}`}
-                         style={{marginLeft:'10px'}}
-                         >részletek</a>
-                    </li>
-                ))}
-            </ul>
+            <p>{phones?.brand},{phones?.model},{phones?.price}</p>
         </div>
     </>
 }

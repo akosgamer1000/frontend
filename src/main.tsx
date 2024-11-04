@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client'
 import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Telefonlista from './components/TelefonLista';
 import TelefonFelvetel from './components/TelefonFelvetel';
+import Telefontörlés from './components/Telefontörlés';
+import TelefonRészletek from './components/telefonRészleteg';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,15 @@ const router = createBrowserRouter([
   {
     path: "/telefonfelvetel",
     element: <TelefonFelvetel />,
-  }
+  },
+  {
+    path: "/telefontörlés",
+    element: <Telefontörlés />,
+  },
+  {
+    path: "/telefonRész/:telefonId",
+    element: <TelefonRészletek />,
+  },
 ]);
 
 

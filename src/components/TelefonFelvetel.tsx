@@ -39,6 +39,8 @@ export default function TelefonFelvetel() {
     }
     return <>
         <h2>Telefon felvétel</h2>
+        <a href="/telefonok">telefon lista</a><br />
+        <a href="/telefontörlés">telefon törlése</a><br />
         <form onSubmit={handleSubmit}>
             <label>
                 <p>Brand:</p>
@@ -63,7 +65,7 @@ export default function TelefonFelvetel() {
                 <input
                     type="text"
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setPrice(parseInt( e.target.value))}
                 />
                 {price}
             </label>
