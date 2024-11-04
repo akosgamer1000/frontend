@@ -56,6 +56,7 @@ export default function TelefonRészletek(){
             <a href="/telefonfelvetel">új telefon felvétel</a><br />
             <a href="/telefontörlés">telefon törlése</a><br />
             <p>{phones?.brand},{phones?.model},{phones?.price}</p>
+        
         </div>
     </>
 }
